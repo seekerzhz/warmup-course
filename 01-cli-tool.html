@@ -1,0 +1,481 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>轮子 1 · 命令行笔记工具 · LSM 课程热身轨道</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.2.5">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="02-persistence.html" />
+    
+    
+    <link rel="prev" href="00-how-to-use.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="00-how-to-use.html">
+            
+                <a href="00-how-to-use.html">
+            
+                    
+                    如何使用热身站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="01-cli-tool.html">
+            
+                <a href="01-cli-tool.html">
+            
+                    
+                    轮子 1 · 命令行笔记工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="02-persistence.html">
+            
+                <a href="02-persistence.html">
+            
+                    
+                    轮子 2 · 让 note 记住
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="03-index.html">
+            
+                <a href="03-index.html">
+            
+                    
+                    轮子 3 · 索引分层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="04-wal-recovery.html">
+            
+                <a href="04-wal-recovery.html">
+            
+                    
+                    轮子 4 · 日志恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="05-concurrency.html">
+            
+                <a href="05-concurrency.html">
+            
+                    
+                    轮子 5 · 并发与优雅关闭（选做）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="06-entrance-ticket.html">
+            
+                <a href="06-entrance-ticket.html">
+            
+                    
+                    入场券自测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="appendix-cpp.html">
+            
+                <a href="appendix-cpp.html">
+            
+                    
+                    附录：竞赛生视角的 C++ 工程速查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="appendix-oj-map.html">
+            
+                <a href="appendix-oj-map.html">
+            
+                    
+                    附录：轮子 ↔ OJ 题号映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >轮子 1 · 命令行笔记工具</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="轮子-1-·-命令行笔记工具">轮子 1 · 命令行笔记工具</h1>
+<h2 id="一个真实的失败">一个真实的失败</h2>
+<p>你在 <code>main.cpp</code> 里写完了 <code>note</code> 的全部逻辑：加笔记、列笔记、按关键字搜、按 id 删。一共 600 多行，一个 <code>switch</code> 管四个子命令，函数名从 <code>add</code> 到 <code>add2</code> 到 <code>add_real</code>。编译通过，跑起来也对。</p>
+<p>然后你发现搜索有个 bug：搜 <code>abc</code> 的时候会把 <code>abcdef</code> 也算命中，本该是子串匹配，结果变成了前缀匹配。</p>
+<p>你去改。改完之后想验证，得先 <code>./note add "abcdef"</code>、再 <code>./note add "abc"</code>、再 <code>./note search abc</code>，看两行输出对不对。改一次逻辑，重跑四遍手工命令。第三次改的时候你手滑把 <code>add</code> 改成写入了两条，于是你以为修好了。</p>
+<p>这就是这一轮真正要解决的东西。不是「怎么把一个字符串塞进 vector」，那个你会。是<strong>怎么把程序拆到能改得动、能重跑、构建一条命令就完事</strong>。</p>
+<h2 id="竞赛生映射">竞赛生映射</h2>
+<p>你已经会的（占比比你想的高）：</p>
+<ul>
+<li>字符串处理、<code>std::string</code> 的 <code>find</code> / <code>substr</code>，用于搜索</li>
+<li>数组 / <code>vector</code> 的遍历、删除元素（注意 <code>erase</code> 之后迭代器失效）</li>
+<li>从 <code>cin</code> 读一行、按空格切分 —— 这和命令行参数解析几乎是同一件事</li>
+</ul>
+<p>真正的新东西只有两件：</p>
+<ol>
+<li><strong>一个程序 = 多个源文件 + 一个构建脚本</strong>。你现在写的每个程序都是单文件、<code>g++ a.cpp -o a</code>。从这一轮开始，文件会变多，编译命令会变长到记不住，所以要交给 CMake 管。</li>
+<li><strong>程序的输入来自命令行参数，不是标准输入</strong>。<code>argv</code> 是别人（shell）递给你的字符串数组，你得自己校验它合不合法、不合法就报错退出。</li>
+</ol>
+<h2 id="你要做的东西">你要做的东西</h2>
+<p>一个叫 <code>note</code> 的可执行文件，四个子命令，数据先放内存（这一轮不做持久化，那是轮子 2）：</p>
+<pre><code>./note add "买牛奶"
+./note list
+./note search 牛奶
+./note delete 3
+</code></pre><p>要求：<code>add</code> 打印新笔记的 id；<code>list</code> 每行一条；<code>search</code> 输出命中的条目；<code>delete</code> 删掉对应 id，删不存在的 id 要报错。参数不够、子命令不认识、id 不是数字，都要返回非 0 退出码并往 stderr 打一行提示。</p>
+<p>不要一开始就拆文件。先在一个 <code>main.cpp</code> 里写通，跑起来，再拆。拆的过程本身就是这一轮的训练内容 —— 你会第一次遇到 <code>undefined reference</code>，也会第一次意识到「头文件里放什么」是个需要判断的问题。</p>
+<h3 id="建议的拆分（拆完再对照，别提前照抄）">建议的拆分（拆完再对照，别提前照抄）</h3>
+<ul>
+<li><code>note.hpp</code> / <code>note.cpp</code> —— 笔记的数据结构和增删查（纯逻辑，不碰 <code>argv</code>，不打印）</li>
+<li><code>main.cpp</code> —— 解析 <code>argv</code>，分发子命令，负责打印和退出码</li>
+</ul>
+<p>这个边界的意义：<code>note.cpp</code> 里不该出现 <code>std::cout</code>，<code>main.cpp</code> 里不该出现 <code>vector</code>。分得干净，下一轮加持久化的时候你只需要动 <code>note.cpp</code>。</p>
+<h2 id="真正的新东西">真正的新东西</h2>
+<h3 id="1-声明和定义是两回事">1. 声明和定义是两回事</h3>
+<p>头文件里写<strong>声明</strong>（长什么样），<code>.cpp</code> 里写<strong>定义</strong>（怎么做的）。链接器的工作是把「谁调用了什么」和「谁实现了什么」对上。对不上就报 <code>undefined reference to ...</code>。</p>
+<p>一个常见误解：<code>#include "note.hpp"</code> 不等于把 <code>note.cpp</code> 编进来了。<code>#include</code> 是文本粘贴，只粘贴声明。实现必须靠构建脚本把 <code>note.cpp</code> 也编译进去，否则链接器找不到它。</p>
+<h3 id="2-cmakelists-是最小构建脚本">2. CMakeLists 是最小构建脚本</h3>
+<p>你只需要记住它做的三件事：告诉 CMake 需要什么 C++ 标准、有哪些源文件、生成什么名字的可执行文件。</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.16</span>)
+<span class="hljs-keyword">project</span>(note CXX)
+
+<span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">17</span>)
+<span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="hljs-keyword">ON</span>)
+<span class="hljs-keyword">set</span>(CMAKE_CXX_FLAGS <span class="hljs-string">"${CMAKE_CXX_FLAGS} -Wall -Wextra -g"</span>)
+
+<span class="hljs-keyword">add_executable</span>(note
+    main.cpp
+    note.cpp
+)
+</code></pre>
+<p>用法固定三步：</p>
+<pre><code class="lang-bash">cmake -S . -B build      <span class="hljs-comment"># 配置，只在改了 CMakeLists 之后需要重跑</span>
+cmake --build build -j   <span class="hljs-comment"># 编译，改了代码只需要这一步</span>
+./build/note list
+</code></pre>
+<p><code>add_executable</code> 里漏了 <code>note.cpp</code>，症状就是编译期一声不响、链接期 <code>undefined reference</code>。这不是玄学，是名单没报全。</p>
+<h3 id="3-argc-和-argv">3. <code>argc</code> 和 <code>argv</code></h3>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span>** argv)</span> </span>{
+    <span class="hljs-comment">// argv[0] 是程序自己的名字，参数从 argv[1] 开始</span>
+    <span class="hljs-comment">// argc 最小是 1：光敲 ./note 不加参数，argc 就是 1</span>
+}
+</code></pre>
+<p>两个必须记住的边界：<code>argc == 1</code> 时<strong>不能</strong>碰 <code>argv[1]</code>，那是越界；<code>argv[argc]</code> 保证是 <code>nullptr</code>，可以拿来当循环终止条件。参数里的中文是 UTF-8 字节串，<code>std::string</code> 直接接住就行，不用特殊处理。</p>
+<h3 id="4-子命令分发">4. 子命令分发</h3>
+<p>不要写一长串 <code>if/else</code> 套 <code>strcmp</code>。先把子命令名和参数列表取出来，再做分派 —— 分派表可以是 <code>if</code> 链，也可以是 <code>map&lt;string, function&gt;</code>，但这个决定要在你写完第一版之后再考虑，别为了「优雅」提前上抽象。</p>
+<h2 id="完成标志">完成标志</h2>
+<p>做完这四件，这个轮子才算过：</p>
+<ol>
+<li>删掉 <code>build/</code> 目录，从零跑 <code>cmake -S . -B build &amp;&amp; cmake --build build</code> 能成功，无警告</li>
+<li>四个子命令都能跑：<code>add</code> 两次之后 <code>list</code> 有两行，<code>search</code> 能命中子串，<code>delete</code> 之后 <code>list</code> 少一行</li>
+<li>错误输入返回非 0：<code>./note</code>（无参数）、<code>./note foo</code>（未知子命令）、<code>./note delete abc</code>（id 非数字）都要 <code>echo $?</code> 得到非 0</li>
+<li>你手动改 <code>note.cpp</code> 里的一个函数签名，重新只跑 <code>cmake --build build</code>，能看出错误来自哪个文件哪一行（这是 <code>-g</code> 和分文件带来的好处）</li>
+</ol>
+<h2 id="常见卡点">常见卡点</h2>
+<p><strong><code>undefined reference to 'xxx'</code>，编译过了链接挂</strong>
+→ 声明了没实现，或者实现了但没进 <code>add_executable</code> 的名单
+→ 先 <code>grep</code> 一下这个函数在哪个 <code>.cpp</code> 里有没有定义；有定义就检查 CMakeLists 名单，改完重跑 <code>cmake -S . -B build</code>（只改 <code>.cpp</code> 不用重跑，改 CMakeLists 必须重跑）</p>
+<p><strong><code>fatal error: note.hpp: No such file or directory</code></strong>
+→ 头文件不在编译器找的路径里
+→ 如果头文件和 <code>main.cpp</code> 同目录，用 <code>#include "note.hpp"</code>（双引号，先找当前目录）；用了尖括号就会去系统路径找</p>
+<p><strong>程序不报错但什么都不输出，或者 <code>list</code> 输出乱码</strong>
+→ <code>argc</code> 边界没判，读到了 <code>argv[1]</code> 之外的内存
+→ 在 <code>main</code> 第一行把 <code>argc</code> 和每个 <code>argv[i]</code> 打出来看一眼；顺便确认 <code>list</code> 里的 <code>printf("%s")</code> 没有配 <code>std::string</code>（要用 <code>.c_str()</code>）</p>
+<p><strong><code>delete</code> 之后 <code>list</code> 少了两条，或者直接崩</strong>
+→ <code>vector::erase</code> 之后继续用旧迭代器，或者边遍历边删
+→ 改成「先记下要删的下标，遍历结束再 <code>erase</code>」，或者用 <code>std::remove_if</code> + <code>erase</code></p>
+<p><strong>改了代码但行为没变</strong>
+→ 编的是 <code>build/note</code>，跑的是 <code>./note</code>（旧的可执行文件），或者反过来
+→ 统一用 <code>./build/note</code>，并且把构建命令写进一个 <code>run.sh</code> 里</p>
+<h2 id="对应-oj-练习">对应 OJ 练习</h2>
+<p>这一轮的业务逻辑大部分不适合抽成纯函数，但有两块可以：</p>
+<ol>
+<li><strong>子串搜索</strong>：给定 N 个字符串和一个模式串，输出所有包含该模式的字符串的下标。这是 <code>std::string::find</code> 的直接练习，注意重叠匹配（<code>aaa</code> 里搜 <code>aa</code> 应该命中两次）。</li>
+<li><strong>命令行参数解析</strong>：给定一行 shell 命令（含引号），切分出 argv 数组并输出每个参数。这是分词，用状态机写，是 <code>argc/argv</code> 的真正内核。</li>
+</ol>
+<p>HydroOJ 上如果有对应题库，直接搜「字符串匹配」「分词」；没有题库就自测 —— 自己准备 3 组输入输出，跑通算过，跑不通就说明边界没考虑全。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="00-how-to-use.html" class="navigation navigation-prev " aria-label="Previous page: 如何使用热身站">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="02-persistence.html" class="navigation navigation-next " aria-label="Next page: 轮子 2 · 让 note 记住">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"轮子 1 · 命令行笔记工具","level":"1.3","depth":1,"next":{"title":"轮子 2 · 让 note 记住","level":"1.4","depth":1,"path":"02-persistence.md","ref":"02-persistence.md","articles":[]},"previous":{"title":"如何使用热身站","level":"1.2","depth":1,"path":"00-how-to-use.md","ref":"00-how-to-use.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"LSM 课程热身轨道","gitbook":"*","description":"从命令行工具到 LSM 的五个轮子"},"file":{"path":"01-cli-tool.md","mtime":"2026-11-01T08:46:04.247Z","type":"markdown"},"gitbook":{"version":"6.2.5","time":"2026-11-01T08:46:15.528Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

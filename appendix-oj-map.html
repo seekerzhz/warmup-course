@@ -1,0 +1,530 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>附录：轮子 ↔ OJ 题号映射 · LSM 课程热身轨道</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.2.5">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="appendix-cpp.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="00-how-to-use.html">
+            
+                <a href="00-how-to-use.html">
+            
+                    
+                    如何使用热身站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-cli-tool.html">
+            
+                <a href="01-cli-tool.html">
+            
+                    
+                    轮子 1 · 命令行笔记工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="02-persistence.html">
+            
+                <a href="02-persistence.html">
+            
+                    
+                    轮子 2 · 让 note 记住
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="03-index.html">
+            
+                <a href="03-index.html">
+            
+                    
+                    轮子 3 · 索引分层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="04-wal-recovery.html">
+            
+                <a href="04-wal-recovery.html">
+            
+                    
+                    轮子 4 · 日志恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="05-concurrency.html">
+            
+                <a href="05-concurrency.html">
+            
+                    
+                    轮子 5 · 并发与优雅关闭（选做）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="06-entrance-ticket.html">
+            
+                <a href="06-entrance-ticket.html">
+            
+                    
+                    入场券自测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="appendix-cpp.html">
+            
+                <a href="appendix-cpp.html">
+            
+                    
+                    附录：竞赛生视角的 C++ 工程速查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10" data-path="appendix-oj-map.html">
+            
+                <a href="appendix-oj-map.html">
+            
+                    
+                    附录：轮子 ↔ OJ 题号映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >附录：轮子 ↔ OJ 题号映射</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="附录：轮子-↔-oj-题号映射">附录：轮子 ↔ OJ 题号映射</h1>
+<p>这一页解决一个问题：<strong>热身站里的代码大部分是 IO 和生命周期，没法判题。哪些部分能抽成纯函数、能拿去 OJ 上刷？</strong></p>
+<p>判据很简单：一个函数如果只吃字节/数组、只吐字节/数组，不碰文件、不碰线程、不碰时钟，它就能 OJ 化。</p>
+<h2 id="映射总表">映射总表</h2>
+<table>
+<thead>
+<tr>
+<th>轮子</th>
+<th>可 OJ 化的纯函数</th>
+<th>难度</th>
+<th>在 LSM 里对应什么</th>
+<th>HydroOJ 检索词</th>
+<th>无题库时的自测方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · 命令行工具</td>
+<td>子串搜索（含重叠匹配）</td>
+<td>入门</td>
+<td>——</td>
+<td><code>字符串匹配</code> <code>KMP</code></td>
+<td>3 组输入输出，必须含 <code>aaa</code> 搜 <code>aa</code> 命中 2 次</td>
+</tr>
+<tr>
+<td>1 · 命令行工具</td>
+<td>shell 词法切分（引号/转义）</td>
+<td>入门</td>
+<td>——</td>
+<td><code>模拟</code> <code>字符串处理</code></td>
+<td>3 组输入，含未闭合引号，要求报错而非吞掉</td>
+</tr>
+<tr>
+<td>2 · 持久化</td>
+<td>VarInt 编解码</td>
+<td>入门</td>
+<td>SSTable 索引块的键/偏移编码</td>
+<td><code>进制转换</code> <code>位运算</code></td>
+<td>往返 10 万个随机数，<code>decode(encode(x)) == x</code> 全过</td>
+</tr>
+<tr>
+<td>2 · 持久化</td>
+<td>CRC32</td>
+<td>入门</td>
+<td>每个 block / 每条 WAL 记录的校验</td>
+<td><code>CRC</code> <code>哈希</code></td>
+<td>和 <code>zlib</code> 或 <code>cksum</code> 对比 1000 组随机串</td>
+</tr>
+<tr>
+<td>2 · 持久化</td>
+<td>定长/变长记录流解析</td>
+<td>中等</td>
+<td>Block 内部记录解析</td>
+<td><code>模拟</code> <code>字符串处理</code></td>
+<td>3 组含「尾部截断」的输入，要求输出最后完整记录的偏移</td>
+</tr>
+<tr>
+<td>3 · 索引分层</td>
+<td>二分查找（首个 ≥ x）</td>
+<td>入门</td>
+<td>SSTable 块内定位、索引块定位</td>
+<td><code>二分</code> <code>有序表</code></td>
+<td>10 万随机数组 × 1 万次查询，和 <code>lower_bound</code> 全比对</td>
+</tr>
+<tr>
+<td>3 · 索引分层</td>
+<td>跳表 insert/find/erase</td>
+<td>中等</td>
+<td>MemTable 的有序结构</td>
+<td><code>跳表</code> <code>平衡树</code></td>
+<td>20 万次随机操作，和 <code>std::map</code> 结果全比对</td>
+</tr>
+<tr>
+<td>3 · 索引分层</td>
+<td>静态区间第 K 小</td>
+<td>中等</td>
+<td>—— （练定位手感）</td>
+<td><code>主席树</code> <code>整体二分</code></td>
+<td>随机数据暴力对拍</td>
+</tr>
+<tr>
+<td>4 · 日志恢复</td>
+<td>幂等重放（状态机）</td>
+<td>中等</td>
+<td>WAL replay</td>
+<td><code>模拟</code></td>
+<td>同一日志重放 1 次 / 2 次 / 10 次，终态必须相同</td>
+</tr>
+<tr>
+<td>4 · 日志恢复</td>
+<td>带长度前缀的流式扫描</td>
+<td>中等</td>
+<td>WAL 恢复、Block 扫描</td>
+<td><code>模拟</code> <code>双指针</code></td>
+<td>构造 3 组：完整 / 尾截断 / 中间坏 CRC</td>
+</tr>
+<tr>
+<td>5 · 并发</td>
+<td>Bloom filter</td>
+<td>中等</td>
+<td>减少无效 SSTable 查找</td>
+<td><code>位运算</code> <code>哈希</code></td>
+<td>10 万插入 + 10 万查询，误判 &lt; 1%，无假阴性，内存 &lt; 1 MB</td>
+</tr>
+<tr>
+<td>5 · 并发</td>
+<td>SPSC 无锁队列</td>
+<td>较难</td>
+<td>后台任务投递</td>
+<td><code>队列</code> <code>模拟</code></td>
+<td>100 万次入队出队，顺序和计数全对</td>
+</tr>
+<tr>
+<td>—— （LSM 阶段 2 前置）</td>
+<td>MergeIterator（多路归并）</td>
+<td>中等</td>
+<td>多个 SSTable 的有序合并</td>
+<td><code>归并</code> <code>堆</code> <code>优先队列</code></td>
+<td>5 路各 10 万有序数据，归并结果和 <code>sort</code> 全比对</td>
+</tr>
+</tbody>
+</table>
+<h2 id="用哪几个最划算">用哪几个最划算</h2>
+<p>如果你只有时间刷三个，选这三个：</p>
+<ol>
+<li><strong>VarInt 编解码 + CRC32</strong>（轮子 2）—— 一天能写完，而且这两个东西你在 LSM 阶段 2 会<strong>直接复用</strong>。它们不是练习题，是生产代码的草稿。</li>
+<li><strong>跳表</strong>（轮子 3）—— 写一遍你就理解「为什么 LSM 的 MemTable 不用红黑树」。跳表的迭代器天然有序、插入不用旋转，这两点直接决定后面写 MergeIterator 有多痛苦。</li>
+<li><strong>MergeIterator</strong>（多路归并 + 堆）—— 这是 LSM 阶段 2 的核心组件。在这里先写一个纯内存版（<code>vector&lt;vector&lt;int&gt;&gt;</code> 归并），到 LSM 里换成「每个 SSTable 一个迭代器」，逻辑一行不用改。</li>
+</ol>
+<h2 id="一个提醒">一个提醒</h2>
+<p>OJ 判题只看输入输出，不看你的错误处理。而热身站里最值钱的部分恰恰是错误处理（坏文件、半条记录、<code>kill -9</code>）。</p>
+<p>所以：<strong>OJ 用来练纯函数的正确性和速度，错误处理只能靠自己写自测。</strong> 每个纯函数配一条「坏输入」用例，比如 VarInt 的截断字节串、CRC 覆盖范围错一位、归并时某一路提前耗尽 —— 这三条比刷十道模板题有用。</p>
+<h2 id="自测脚本模板">自测脚本模板</h2>
+<p>放在项目根的 <code>test.sh</code>，每轮结束时跑一遍：</p>
+<pre><code class="lang-bash"><span class="hljs-meta">#!/usr/bin/env bash</span>
+<span class="hljs-built_in">set</span> -u
+fail=0
+<span class="hljs-function"><span class="hljs-title">check</span></span>() {  <span class="hljs-comment"># check &lt;名字&gt; &lt;期望&gt; &lt;实际&gt;</span>
+  <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$2</span>"</span> = <span class="hljs-string">"<span class="hljs-variable">$3</span>"</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">"  ok   <span class="hljs-variable">$1</span>"</span>
+  <span class="hljs-keyword">else</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">"  FAIL <span class="hljs-variable">$1</span>: 期望[<span class="hljs-variable">$2</span>] 实际[<span class="hljs-variable">$3</span>]"</span>; fail=1; <span class="hljs-keyword">fi</span>
+}
+
+check <span class="hljs-string">"空输入返回空"</span> <span class="hljs-string">"0"</span> <span class="hljs-string">"<span class="hljs-subst">$(./build/note list | wc -l | tr -d ' ')</span>"</span>
+./build/note add <span class="hljs-string">"abc"</span> &gt; /dev/null
+check <span class="hljs-string">"add 之后有一条"</span> <span class="hljs-string">"1"</span> <span class="hljs-string">"<span class="hljs-subst">$(./build/note list | wc -l | tr -d ' ')</span>"</span>
+check <span class="hljs-string">"子串匹配"</span> <span class="hljs-string">"1"</span> <span class="hljs-string">"<span class="hljs-subst">$(./build/note search bc | wc -l | tr -d ' ')</span>"</span>
+check <span class="hljs-string">"删不存在的 id 报错"</span> <span class="hljs-string">"1"</span> <span class="hljs-string">"<span class="hljs-subst">$(./build/note delete 999 &gt;/dev/null 2&gt;&amp;1; echo $?)</span>"</span>
+
+[ <span class="hljs-variable">$fail</span> -eq 0 ] &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">"ALL PASS"</span> || { <span class="hljs-built_in">echo</span> <span class="hljs-string">"HAS FAILURE"</span>; <span class="hljs-built_in">exit</span> 1; }
+</code></pre>
+<p>好处是：改完代码跑一次，比手工敲五条命令可靠。这个习惯在 LSM 里会救你很多次 —— 那边的状态更多，手工验证根本不可能覆盖。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="appendix-cpp.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 附录：竞赛生视角的 C++ 工程速查">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"附录：轮子 ↔ OJ 题号映射","level":"1.10","depth":1,"previous":{"title":"附录：竞赛生视角的 C++ 工程速查","level":"1.9","depth":1,"path":"appendix-cpp.md","ref":"appendix-cpp.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"LSM 课程热身轨道","gitbook":"*","description":"从命令行工具到 LSM 的五个轮子"},"file":{"path":"appendix-oj-map.md","mtime":"2026-11-01T08:46:04.248Z","type":"markdown"},"gitbook":{"version":"6.2.5","time":"2026-11-01T08:46:15.528Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

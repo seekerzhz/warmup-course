@@ -1,0 +1,452 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>轮子 3 · 索引分层 · LSM 课程热身轨道</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.2.5">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="04-wal-recovery.html" />
+    
+    
+    <link rel="prev" href="02-persistence.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="00-how-to-use.html">
+            
+                <a href="00-how-to-use.html">
+            
+                    
+                    如何使用热身站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-cli-tool.html">
+            
+                <a href="01-cli-tool.html">
+            
+                    
+                    轮子 1 · 命令行笔记工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="02-persistence.html">
+            
+                <a href="02-persistence.html">
+            
+                    
+                    轮子 2 · 让 note 记住
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="03-index.html">
+            
+                <a href="03-index.html">
+            
+                    
+                    轮子 3 · 索引分层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="04-wal-recovery.html">
+            
+                <a href="04-wal-recovery.html">
+            
+                    
+                    轮子 4 · 日志恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="05-concurrency.html">
+            
+                <a href="05-concurrency.html">
+            
+                    
+                    轮子 5 · 并发与优雅关闭（选做）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="06-entrance-ticket.html">
+            
+                <a href="06-entrance-ticket.html">
+            
+                    
+                    入场券自测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="appendix-cpp.html">
+            
+                <a href="appendix-cpp.html">
+            
+                    
+                    附录：竞赛生视角的 C++ 工程速查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="appendix-oj-map.html">
+            
+                <a href="appendix-oj-map.html">
+            
+                    
+                    附录：轮子 ↔ OJ 题号映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >轮子 3 · 索引分层</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="轮子-3-·-索引分层">轮子 3 · 索引分层</h1>
+<h2 id="一个真实的失败">一个真实的失败</h2>
+<p>轮子 2 的 <code>note</code> 已经能存能读了。你为了测试，写了个脚本往里面灌了 50 万条笔记（每条一百多字）。然后再跑 <code>./build/note list</code>：</p>
+<pre><code>real    0m4.213s
+</code></pre><p>你以为是磁盘慢，<code>time</code> 了一下 <code>cat notes.bin &gt; /dev/null</code>——0.05 秒。快得很。</p>
+<p>真相是：程序在启动时把 50 万条<strong>完整记录</strong>全读进了内存，<code>list</code> 只是把内存里的东西打出来。你看了一眼 <code>top</code>，常驻内存 380 MB。你在笔记本上跑的时候，还 OOM 过一次。</p>
+<p>问题是：<strong>你 99% 的时间只查一条笔记，却每次都要把 50 万条全部搬进内存。</strong> 这就是这一轮要拆掉的东西。数据留在磁盘上，内存里只放「去哪儿找」这张地图。</p>
+<h2 id="竞赛生映射">竞赛生映射</h2>
+<p>你已经会的：</p>
+<ul>
+<li>二分查找、哈希表。这一轮的核心还是它们，一行都没变</li>
+<li>「按 id 排序之后二分」这个套路，你在做离散化、做区间查询时用过无数次</li>
+<li>定长数组的随机访问：<code>a[i]</code> 是 O(1)，因为地址能算出来</li>
+</ul>
+<p>真正的新东西只有一个，但它会改变你写代码的手感：</p>
+<p><strong>数据不在内存里，每一次访问都是 IO。</strong></p>
+<p><code>a[i]</code> 和「<code>seek</code> 到第 i 条再读 128 字节」在算法复杂度上是同一件事（都是 O(1)），但代价差四到五个数量级。内存随机访问约 100 纳秒，磁盘随机读约 100 微秒。这意味着：<strong>以前可以随手做的 100 次访问，现在必须想办法合并成 1 次。</strong> LSM 里所有看起来奇怪的设计（SSTable 按块组织、块内有序、Bloom filter），都是在为这一条让路。</p>
+<h2 id="你要做的东西">你要做的东西</h2>
+<p>把 <code>note</code> 从「全量加载」改成「磁盘存数据 + 内存存地图」。分两步走，不要一步到位。</p>
+<h3 id="第一步：稠密索引">第一步：稠密索引</h3>
+<p>两个文件：</p>
+<ul>
+<li><code>data.bin</code> —— 只追加，一条记录一段：<code>[长度 u32][正文]</code>。记录本身按写入顺序排列，不排序</li>
+<li><code>index.bin</code> —— 定长条目，每条 16 字节：<code>[id u64][offset u64]</code>。<strong>按 id 升序</strong>排列</li>
+</ul>
+<p>启动时只读 <code>index.bin</code>（50 万条 × 16 字节 = 8 MB），不碰 <code>data.bin</code>。查一条：在内存里对索引二分找到 offset，<code>seekg(offset)</code> 到 <code>data.bin</code> 对应位置，读长度、读正文，结束。</p>
+<p>到这一步，启动应该已经进入百毫秒级。但你还会发现一个问题：索引本身还是线性的，8 MB 换 50 万条，500 万条就是 80 MB。所以还有第二步。</p>
+<h3 id="第二步：稀疏索引（真正的「分层」）">第二步：稀疏索引（真正的「分层」）</h3>
+<p>不要给每个 id 都记一条，只给<strong>每 64 条记一个锚点</strong>：<code>[id u64][offset u64]</code>，锚点之间隔着 64 条连续记录。</p>
+<p>查 id 的时候：二分找到「最后一个 id ≤ 目标 id」的锚点，从它指向的 offset 开始，<strong>顺序扫最多 64 条</strong>。</p>
+<p>代价：多扫 64 条。收益：索引内存变成 1/64。50 万条的索引从 8 MB 降到 125 KB，而且这个斜率是数据量的 1/64 —— 数据翻 10 倍，索引只多 1.2 MB。</p>
+<p>这就是分层索引。LSM 的 SSTable 用的是同一套思路（块内有序 + 稀疏块索引），只是它的块大小按 4 KB 对齐，还多了一层 Bloom filter 用来跳过「肯定不存在」的查询。</p>
+<h3 id="两个必须想清楚的设计点">两个必须想清楚的设计点</h3>
+<p><strong>offset 用什么类型。</strong> <code>uint32_t</code> 最大 4 GB，数据文件超过 4 GB 的那天你就会读到错误的位置，而且不会报错 —— 你会读到一段看似合法其实是别的记录的字节。用 <code>uint64_t</code>。这个坑 LSM 里也会有（SSTable 的 block offset），别提前踩。</p>
+<p><strong>改了数据，索引要跟着改。</strong> 追加一条记录 → <code>data.bin</code> 末尾多一段、<code>index.bin</code> 多一个锚点（或者改最后一个锚点的区间）；删除一条 → 数据文件不动（追加是唯一写模式），只在索引里标记为已删，或者单独维护一个删除标记文件。<strong>不要用「原地覆盖某条记录」的方式改数据</strong> —— 变长记录原地覆盖会挤掉后面的内容，这是这一轮最容易写出的静默错误。</p>
+<h2 id="完成标志">完成标志</h2>
+<p>用 50 万条数据测，数字要自己量出来，不要凭感觉：</p>
+<ol>
+<li>启动到能接受命令 <strong>&lt; 100 ms</strong>（<code>time ./build/note list | head -1</code>，或者程序里打时间戳）</li>
+<li>单条点查 <strong>&lt; 10 ms</strong>（<code>time ./build/note search &lt;某个真实存在的 id&gt;</code>）</li>
+<li>内存不随数据量线性涨：分别在 10 万条和 50 万条下 <code>top</code> / <code>/usr/bin/time -v</code> 看 RSS。<strong>数据涨 5 倍，RSS 涨幅应该远小于 5 倍</strong>（稀疏索引下大概只多几百 KB）。如果你的 RSS 也涨了 5 倍，说明你还在读全量</li>
+<li>查一个<strong>不存在</strong>的 id，能在 10 ms 内返回「没有」，不是扫全表</li>
+<li><code>ls -l data.bin index.bin</code>：<code>data.bin</code> 是几十 MB，<code>index.bin</code> 是几百 KB。如果 <code>index.bin</code> 和 <code>data.bin</code> 差不多大，说明你把正文也写进索引了</li>
+</ol>
+<h2 id="常见卡点">常见卡点</h2>
+<p><strong>启动还是几秒，RSS 还是几百 MB</strong>
+→ 你只把「索引」改成了从文件读，但读的时候 <code>while</code> 循环里顺手把每条记录也读了一遍（比如为了算 count 或者为了排序）
+→ 索引文件里存足够的信息（id、offset），启动阶段<strong>完全不打开 <code>data.bin</code></strong>。需要 count 就单独存一个头部字段</p>
+<p><strong>查到的内容是别的笔记，或者读到一半乱码</strong>
+→ offset 类型溢出（<code>int32_t</code> / <code>uint32_t</code> 存了超过 4 GB 的偏移），或者 offset 是相对位置但你当成绝对位置用了
+→ offset 全用 <code>uint64_t</code>；<code>seekg</code> 一律用绝对位置（<code>std::ios::beg</code>）。怀疑时把 offset 和文件大小打印出来比一下</p>
+<p><strong>删了一条之后，再查就错位</strong>
+→ 在原地覆盖了变长记录，后面的数据全被挤乱
+→ 数据文件只追加，不原地改。删除用逻辑删除（索引里标记），或者在压缩（compact）时整体重写一个新文件再 <code>rename</code></p>
+<p><strong>二分找得到 id，但读出来的正文和 id 对不上</strong>
+→ 索引排序了，数据文件没按同样顺序排（或者是按 id 二分，但数据是按写入时间追加的）
+→ 二分的 key 和 offset 指向的记录必须严格对应。稠密索引用 id 排序、offset 指真实位置就行；稀疏索引要求<strong>锚点之间的记录也按 id 有序</strong>，否则「扫 64 条」根本扫不到</p>
+<p><strong>数据文件越写越大，删了也不变小</strong>
+→ 追加 + 逻辑删除的必然结果
+→ 这是特性不是 bug。压缩（compact）是 LSM 阶段 3 的内容；这一轮只需要你知道「为什么会有 compact」</p>
+<h2 id="对应-oj-练习">对应 OJ 练习</h2>
+<ol>
+<li><strong>二分查找（带不存在判定）</strong>：标准二分，但要求返回「第一个 ≥ x 的位置」和「是否存在」两个信息。稀疏索引就是靠这个定位锚点区间的。</li>
+<li><strong>跳表</strong>：实现 <code>insert / find / erase</code>，要求 O(log n) 期望。跳表是 LSM 里 MemTable 的常见实现（比平衡树好写，迭代器方向天然有序），你现在的链表 + 随机层数就能写。</li>
+<li><strong>静态区间第 K 小 / 有序数组离线查询</strong>：练「在有序结构上做定位」，和稀疏索引的定位逻辑同构。</li>
+</ol>
+<p>HydroOJ 上搜「二分」「跳表」「有序表」；没有题库就自测：造 10 万条随机 id 的索引文件，随机查 1 万个点，和 <code>std::lower_bound</code> 的结果逐个比对，全一致才算过。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="02-persistence.html" class="navigation navigation-prev " aria-label="Previous page: 轮子 2 · 让 note 记住">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="04-wal-recovery.html" class="navigation navigation-next " aria-label="Next page: 轮子 4 · 日志恢复">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"轮子 3 · 索引分层","level":"1.5","depth":1,"next":{"title":"轮子 4 · 日志恢复","level":"1.6","depth":1,"path":"04-wal-recovery.md","ref":"04-wal-recovery.md","articles":[]},"previous":{"title":"轮子 2 · 让 note 记住","level":"1.4","depth":1,"path":"02-persistence.md","ref":"02-persistence.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"LSM 课程热身轨道","gitbook":"*","description":"从命令行工具到 LSM 的五个轮子"},"file":{"path":"03-index.md","mtime":"2026-11-01T08:46:04.248Z","type":"markdown"},"gitbook":{"version":"6.2.5","time":"2026-11-01T08:46:15.528Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

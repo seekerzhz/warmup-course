@@ -1,0 +1,5 @@
+_book/
+node_modules/
+.progress.md
+*.bak.*
+.DS_Store

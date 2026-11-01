@@ -1,0 +1,486 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>轮子 5 · 并发与优雅关闭（选做） · LSM 课程热身轨道</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.2.5">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="06-entrance-ticket.html" />
+    
+    
+    <link rel="prev" href="04-wal-recovery.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="00-how-to-use.html">
+            
+                <a href="00-how-to-use.html">
+            
+                    
+                    如何使用热身站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-cli-tool.html">
+            
+                <a href="01-cli-tool.html">
+            
+                    
+                    轮子 1 · 命令行笔记工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="02-persistence.html">
+            
+                <a href="02-persistence.html">
+            
+                    
+                    轮子 2 · 让 note 记住
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="03-index.html">
+            
+                <a href="03-index.html">
+            
+                    
+                    轮子 3 · 索引分层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="04-wal-recovery.html">
+            
+                <a href="04-wal-recovery.html">
+            
+                    
+                    轮子 4 · 日志恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="05-concurrency.html">
+            
+                <a href="05-concurrency.html">
+            
+                    
+                    轮子 5 · 并发与优雅关闭（选做）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="06-entrance-ticket.html">
+            
+                <a href="06-entrance-ticket.html">
+            
+                    
+                    入场券自测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="appendix-cpp.html">
+            
+                <a href="appendix-cpp.html">
+            
+                    
+                    附录：竞赛生视角的 C++ 工程速查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="appendix-oj-map.html">
+            
+                <a href="appendix-oj-map.html">
+            
+                    
+                    附录：轮子 ↔ OJ 题号映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >轮子 5 · 并发与优雅关闭（选做）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="轮子-5-·-并发与优雅关闭（选做）">轮子 5 · 并发与优雅关闭（选做）</h1>
+<h2 id="一个真实的失败">一个真实的失败</h2>
+<p>轮子 4 之后，你的 <code>note</code> 已经是一个说得过去的存储程序了。你想加一个「后台整理」：磁盘上的数据文件越写越大，让一个后台线程定期把已删除的记录真正挤掉，重写一个新文件。</p>
+<p>你起了 <code>std::thread</code>，它每 5 秒扫一遍。前台 <code>note add</code> 照常工作。看起来挺好。</p>
+<p>然后你按了 <code>Ctrl+C</code>：</p>
+<pre><code>terminate called without an active exception
+Aborted (core dumped)
+</code></pre><p>因为主线程 <code>return 0</code> 的时候，那个后台线程还在跑。<code>std::thread</code> 析构时如果线程仍 joinable，标准规定直接 <code>std::terminate</code> —— 不是「等它跑完」，是<strong>当场杀掉整个进程</strong>。</p>
+<p>更阴险的一种：如果你不 <code>Ctrl+C</code>，让后台线程在整理的同时前台在 <code>add</code>，偶尔会读到半条记录 —— 因为后台正在重写文件，前台正好 <code>seek</code> 到了那个位置。这种 bug 一百次跑不出一次，出了就是数据损坏。</p>
+<h2 id="竞赛生映射">竞赛生映射</h2>
+<p>可迁移的：<strong>一个数据结构被两方同时改</strong>这件事本身，你在并查集、线段树 lazy 标记里都处理过「状态要一致」。思路是一样的：先想清楚「哪些操作必须原子地一起完成」。</p>
+<p>全新的东西是三件，而且都是工程性的、不是算法性的：</p>
+<ol>
+<li><code>std::thread</code> 的生命周期规则（必须 <code>join</code> 或 <code>detach</code>，否则析构就 <code>terminate</code>）</li>
+<li><code>mutex</code> / 条件变量 / 读写锁的用法，以及它们<strong>不保证什么</strong>（不保证公平，不保证唤醒）</li>
+<li>信号（<code>SIGTERM</code>）的处理只能在极其受限的环境里做</li>
+</ol>
+<h2 id="你要做的东西">你要做的东西</h2>
+<p>给 <code>note</code> 加一个后台整理线程，并让整个程序能被 <code>SIGTERM</code> 干净地关掉。三件事：</p>
+<h3 id="1-后台线程">1. 后台线程</h3>
+<p>每 5 秒检查一次数据文件：如果「已删除记录」占比超过 30%，就把存活记录重写到一个新文件，然后 <code>rename</code> 覆盖。</p>
+<p>重写期间不能挡住前台写。做法不是「加一把大锁」，而是<strong>写时复制 + 原子改名</strong>：新文件写完之后 <code>rename</code>，前台拿到的是旧文件句柄或新文件句柄，不会拿到半个。</p>
+<h3 id="2-读写锁">2. 读写锁</h3>
+<p><code>shared_mutex</code>：多个读者可以同时持有，写者独占。</p>
+<ul>
+<li>前台 <code>search</code> / <code>list</code> → 共享锁（读锁）</li>
+<li>前台 <code>add</code> / <code>delete</code> → 独占锁（写锁）</li>
+<li>后台整理的文件切换 → 独占锁，但<strong>只在切换那一刻</strong>加，重写过程本身不加</li>
+</ul>
+<p>用反了（读操作加写锁）不会崩，只是并发能力归零，你会看到「后台整理时前台完全卡死」。</p>
+<h3 id="3-优雅关闭">3. 优雅关闭</h3>
+<p>收到 <code>SIGTERM</code>（或 <code>SIGINT</code>）之后，线程要能自己收尾：把手上这一批做完、<code>fsync</code>、退出循环、<code>join</code> 回来、然后进程正常返回。</p>
+<p>关键设计：<strong>信号处理函数里不要做任何事，只置一个标志。</strong> 信号处理函数运行在极受限的环境里，<code>printf</code>、<code>malloc</code>、锁都可能死锁。</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;atomic&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;csignal&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span>
+
+std::atomic&lt;<span class="hljs-type">bool</span>&gt; g_stop{<span class="hljs-literal">false</span>};
+<span class="hljs-keyword">extern</span> <span class="hljs-string">"C"</span> <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">on_signal</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span> </span>{ g_stop.<span class="hljs-built_in">store</span>(<span class="hljs-literal">true</span>); }   <span class="hljs-comment">// 只做这一件事</span>
+
+<span class="hljs-comment">// 在别的线程里 cv.wait_for(..., []{ return g_stop.load(); })</span>
+<span class="hljs-comment">// 主线程解析 signal(SIGTERM, on_signal) 之后，join 后台线程</span>
+</code></pre>
+<p><code>std::atomic&lt;bool&gt;</code> 在信号处理函数里是安全的（无锁、无分配）。别用普通 <code>bool</code>，编译器可能会把它优化进寄存器，导致主循环永远看不到变化。</p>
+<h2 id="真正的新东西">真正的新东西</h2>
+<h3 id="1-mutex-就这五行">1. mutex 就这五行</h3>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mutex&gt;</span></span>
+std::mutex m;
+
+{
+    <span class="hljs-function">std::lock_guard&lt;std::mutex&gt; <span class="hljs-title">lk</span><span class="hljs-params">(m)</span></span>;   <span class="hljs-comment">// 构造即加锁，析构即解锁</span>
+    <span class="hljs-comment">// 临界区</span>
+}                                        <span class="hljs-comment">// 出了作用域必定解锁，异常也解锁</span>
+</code></pre>
+<p><code>lock_guard</code> 是 RAII（资源获取即初始化）的最小例子：把「必须成对出现的操作」绑在对象的生命周期上，就不可能忘。这是 C++ 工程里最重要的一条习惯，比任何算法都值钱。</p>
+<p>要「多个读者并行、写者独占」，把 <code>std::mutex</code> 换成 <code>std::shared_mutex</code>，读用 <code>std::shared_lock</code>，写用 <code>std::unique_lock</code>。</p>
+<h3 id="2-条件变量必须配循环">2. 条件变量必须配循环</h3>
+<pre><code class="lang-cpp"><span class="hljs-function">std::unique_lock&lt;std::mutex&gt; <span class="hljs-title">lk</span><span class="hljs-params">(m)</span></span>;
+cv.<span class="hljs-built_in">wait</span>(lk, []{ <span class="hljs-keyword">return</span> <span class="hljs-built_in">has_work</span>() || g_stop.<span class="hljs-built_in">load</span>(); });   <span class="hljs-comment">// 带谓词的版本，内部就是循环</span>
+</code></pre>
+<p>条件变量会有<strong>虚假唤醒</strong>（没通知它也返回了），也会<strong>丢失唤醒</strong>（通知在 <code>wait</code> 之前发出）。所以判断条件必须放在循环里。带谓词的 <code>wait</code> 帮你写了循环，用它，别手写裸 <code>wait</code>。</p>
+<h3 id="3--fsanitizethread-是你的裁判">3. <code>-fsanitize=thread</code> 是你的裁判</h3>
+<pre><code class="lang-bash">cmake -S . -B build-tsan -DCMAKE_CXX_FLAGS=<span class="hljs-string">"-fsanitize=thread -g -O1"</span>
+cmake --build build-tsan -j
+./build-tsan/note add <span class="hljs-string">"test"</span>
+</code></pre>
+<p>TSan 会在真的发生数据竞争时打印两处调用栈。它只报<strong>实际执行到</strong>的竞争，所以要把并发路径都跑一遍（前台读 + 后台写，同时进行）。干净的 TSan 输出是这一轮唯一的客观标准 —— 不要用「我看了代码觉得没问题」代替它。</p>
+<h2 id="完成标志">完成标志</h2>
+<ol>
+<li><strong>后台整理时前台读不阻塞</strong>：让后台开始整理大文件，同时前台连续 <code>search</code> 100 次，总耗时和「没有后台整理时」相差不超过 2 倍</li>
+<li><strong>TSan 干净</strong>：<code>-fsanitize=thread</code> 编译，跑一遍「前台 1000 次读写 + 后台整理」，零警告</li>
+<li><strong><code>SIGTERM</code> 后干净退出</strong>：<code>kill &lt;pid&gt;</code> 之后进程退出码正常（不是 134/abort），没有 <code>terminate called</code>，日志里没有半条记录</li>
+<li><strong><code>SIGTERM</code> 期间数据不丢</strong>：正在写的记录要么完整写进日志，要么完全没写，不出现半条</li>
+<li><strong>重复 <code>SIGTERM</code> 不出事</strong>：连按两次 <code>Ctrl+C</code>，第二次不会让程序崩在信号处理里</li>
+</ol>
+<h2 id="常见卡点">常见卡点</h2>
+<p><strong>退出时 <code>terminate called without an active exception</code></strong>
+→ 线程还 joinable，<code>std::thread</code> 对象被析构了
+→ 所有线程都要有明确的归宿：要么在某处 <code>join()</code>，要么在启动后立刻 <code>detach()</code>。存储程序里优先 <code>join()</code></p>
+<p><strong><code>cv.wait</code> 之后条件还是不满足，或者线程永远不醒</strong>
+→ 忘了循环判断（虚假唤醒），或者通知在 <code>wait</code> 之前就发了（丢失唤醒），或者通知时没持锁/条件变量和 mutex 不是配对的
+→ 用带谓词的 <code>wait(lk, pred)</code>；修改条件时持锁，改完再 <code>notify_one/all</code></p>
+<p><strong>加了并发之后反而更慢，串行化严重</strong>
+→ 读写锁用反了（读操作拿了写锁），或者临界区太大（把 IO 也包在锁里）
+→ 读路径用 <code>shared_lock</code>；把「读文件内容」挪到锁外，锁里只保护元数据</p>
+<p><strong><code>kill</code> 之后进程不动，卡住不退</strong>
+→ 信号被某个线程屏蔽了，或者后台线程在 <code>wait</code> 里没检查停止标志
+→ 检查 <code>wait</code> 的谓词里有没有 <code>g_stop</code>；确认 <code>signal()</code> 在主线程、任何线程启动之前就注册好</p>
+<p><strong>TSan 报竞争，但你确信那两行不会同时执行</strong>
+→ 通常是真的：其中一个访问没有加锁，或者锁保护的粒度不一致（一边锁了 <code>m</code>，另一边锁了 <code>m2</code>）
+→ 看 TSan 给的两处栈，找到它们各自持有的锁，对比是不是同一把</p>
+<p><strong>在信号处理函数里打印，偶尔死锁</strong>
+→ 信号处理函数不能调用 <code>printf</code> / <code>malloc</code> / 任何非 async-signal-safe 的函数
+→ 处理函数里只置 <code>atomic&lt;bool&gt;</code>，真正的收尾逻辑放在主循环里</p>
+<h2 id="对应-oj-练习">对应 OJ 练习</h2>
+<p>并发本身不适合 OJ（判题机不稳定），但有两块纯逻辑非常值得刷：</p>
+<ol>
+<li><strong>无锁计数器 / 单生产者单消费者队列</strong>：先写一个有锁版本，再写一个 <code>atomic</code> 版本，用压力测试对比。重点是理解 <code>memory_order</code> 的 <code>relaxed</code> / <code>acquire</code> / <code>release</code> 分别在保证什么。</li>
+<li><strong>Bloom filter</strong>：位数组 + 多个哈希，判「可能存在 / 一定不存在」。它是 LSM 里减少无效 IO 的关键结构，纯函数、易测，适合 OJ 化。</li>
+</ol>
+<p>HydroOJ 上搜「位运算」「哈希」「模拟」；没有题库就自测：给定 10 万次插入和 10 万次查询，要求误判率 &lt; 1%、无假阴性，内存占用 &lt; 1 MB。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="04-wal-recovery.html" class="navigation navigation-prev " aria-label="Previous page: 轮子 4 · 日志恢复">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="06-entrance-ticket.html" class="navigation navigation-next " aria-label="Next page: 入场券自测">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"轮子 5 · 并发与优雅关闭（选做）","level":"1.7","depth":1,"next":{"title":"入场券自测","level":"1.8","depth":1,"path":"06-entrance-ticket.md","ref":"06-entrance-ticket.md","articles":[]},"previous":{"title":"轮子 4 · 日志恢复","level":"1.6","depth":1,"path":"04-wal-recovery.md","ref":"04-wal-recovery.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"LSM 课程热身轨道","gitbook":"*","description":"从命令行工具到 LSM 的五个轮子"},"file":{"path":"05-concurrency.md","mtime":"2026-11-01T08:46:04.248Z","type":"markdown"},"gitbook":{"version":"6.2.5","time":"2026-11-01T08:46:15.528Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

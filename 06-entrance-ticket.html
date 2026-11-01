@@ -1,0 +1,480 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>入场券自测 · LSM 课程热身轨道</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.2.5">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="appendix-cpp.html" />
+    
+    
+    <link rel="prev" href="05-concurrency.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="00-how-to-use.html">
+            
+                <a href="00-how-to-use.html">
+            
+                    
+                    如何使用热身站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-cli-tool.html">
+            
+                <a href="01-cli-tool.html">
+            
+                    
+                    轮子 1 · 命令行笔记工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="02-persistence.html">
+            
+                <a href="02-persistence.html">
+            
+                    
+                    轮子 2 · 让 note 记住
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="03-index.html">
+            
+                <a href="03-index.html">
+            
+                    
+                    轮子 3 · 索引分层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="04-wal-recovery.html">
+            
+                <a href="04-wal-recovery.html">
+            
+                    
+                    轮子 4 · 日志恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="05-concurrency.html">
+            
+                <a href="05-concurrency.html">
+            
+                    
+                    轮子 5 · 并发与优雅关闭（选做）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="06-entrance-ticket.html">
+            
+                <a href="06-entrance-ticket.html">
+            
+                    
+                    入场券自测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="appendix-cpp.html">
+            
+                <a href="appendix-cpp.html">
+            
+                    
+                    附录：竞赛生视角的 C++ 工程速查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="appendix-oj-map.html">
+            
+                <a href="appendix-oj-map.html">
+            
+                    
+                    附录：轮子 ↔ OJ 题号映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >入场券自测</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="入场券自测">入场券自测</h1>
+<p>进 LSM 之前先过这一关。12 道题，答上 9 道、并且能当场演示对应的现象，就可以进 <a href="https://docs.hanzel.top/lsm/" target="_blank">LSM 主轨</a>。</p>
+<p>判定标准只有一条：<strong>能跑出来给你看</strong>。「我知道 fsync 比 flush 更狠」不算过；「我能让你看着我 <code>kill -9</code> 然后丢数据，加上 fsync 就不丢」才算过。</p>
+<p>答不上来的题不用猜。每题后面标了回退位置，回去补那一个小节，比重刷整章快得多。</p>
+<h2 id="一、工程能力（构建与拆分）">一、工程能力（构建与拆分）</h2>
+<p><strong>1. 你能独立写一个带 <code>CMakeLists.txt</code> 的 3 文件 C++ 工程吗？</strong>
+要求：<code>note.hpp</code> / <code>note.cpp</code> / <code>main.cpp</code>，<code>cmake -S . -B build &amp;&amp; cmake --build build</code> 一条龙能跑，无警告。
+答不上 → 回<a href="01-cli-tool.html">轮子 1 · CMakeLists 是最小构建脚本</a></p>
+<p><strong>2. 看到 <code>undefined reference to 'foo()'</code>，你能在 30 秒内说出至少两种原因吗？</strong>
+答不上 → 回<a href="01-cli-tool.html">轮子 1 · 声明和定义是两回事</a></p>
+<p><strong>3. 改了 <code>.cpp</code> 和改了 <code>CMakeLists.txt</code>，分别需要重跑哪条命令？</strong>
+答不上 → 回<a href="01-cli-tool.html">轮子 1 · 完成标志第 1 条</a>（那里写了三步命令的差别）</p>
+<h2 id="二、持久化（格式与容错）">二、持久化（格式与容错）</h2>
+<p><strong>4. 你能用 <code>fstream</code> 读写自定义二进制格式，并同时处理「文件不存在」和「文件损坏」两种情况吗？</strong>
+要求：删掉文件能正常启动；改坏一个字节能打印错误并退出，不是崩、不是输出乱码。
+答不上 → 回<a href="02-persistence.html">轮子 2 · 检查失败，而不是假设成功</a></p>
+<p><strong>5. 为什么二进制文件写入必须带 <code>std::ios::binary</code>？不加会怎样？</strong>
+答不上 → 回<a href="02-persistence.html">轮子 2 · 二进制 IO 就这几行</a></p>
+<p><strong>6. 你的文件格式里有版本号吗？旧程序读到新版本文件，会发生什么？</strong>
+要求：能说出「明确报错」和「硬解析出垃圾」两种结果的区别，并说明你的实现属于哪种。
+答不上 → 回<a href="02-persistence.html">轮子 2 · 版本号怎么用</a></p>
+<p><strong>7. 为什么写入要用「临时文件 + rename」，而不是直接覆盖？</strong>
+答不上 → 回<a href="02-persistence.html">轮子 2 · 写入要用「临时文件 + 改名」</a></p>
+<h2 id="三、访问路径（分层与代价）">三、访问路径（分层与代价）</h2>
+<p><strong>8. 50 万条数据，你能把启动时间做到 100 ms 以内吗？靠的是什么？</strong>
+要求：能说清「磁盘存数据 + 内存存地图」这个结构，以及你的索引条目多少字节。
+答不上 → 回<a href="03-index.html">轮子 3 · 第一步：稠密索引</a></p>
+<p><strong>9. 稀疏索引比稠密索引省了什么、多花了什么？为什么 LSM 的 SSTable 也这么干？</strong>
+答不上 → 回<a href="03-index.html">轮子 3 · 第二步：稀疏索引</a></p>
+<p><strong>10. 你的 offset 用什么类型？为什么不能用 <code>uint32_t</code>？</strong>
+答不上 → 回<a href="03-index.html">轮子 3 · 两个必须想清楚的设计点</a></p>
+<h2 id="四、崩溃恢复（这一组最硬）">四、崩溃恢复（这一组最硬）</h2>
+<p><strong>11. 你能解释 <code>fsync</code> 和 <code>flush</code> 的区别吗？</strong>
+要求：能说出三个层次（C++ 缓冲 / 页缓存 / 磁盘），并指出 <code>write</code> 返回成功只保证到哪一层。
+答不上 → 回<a href="04-wal-recovery.html">轮子 4 · 竞赛生映射</a> 和 <a href="04-wal-recovery.html">轮子 4 · <code>flush</code> 不等于 <code>fsync</code></a></p>
+<p><strong>12. 你能复现「不 fsync 就 <code>kill -9</code> 导致丢数据」这个现象吗？</strong>
+要求：当场演示对照组 —— 不 fsync 丢、加 fsync 不丢，条数差异看得见。
+答不上 → 回<a href="04-wal-recovery.html">轮子 4 · 完成标志第 2 条</a></p>
+<p><strong>13. 日志尾部有一条写了一半的记录，你的恢复流程怎么处理？</strong>
+要求：能说出「CRC 不过 / 长度不合理 → 停止扫描 → 截断到上一条完整记录」，并且真的截断了文件。
+答不上 → 回<a href="04-wal-recovery.html">轮子 4 · 崩溃发生在任意位置</a></p>
+<p><strong>14. 你的重放是幂等的吗？重放两次结果一样吗？</strong>
+答不上 → 回<a href="04-wal-recovery.html">轮子 4 · 幂等的关键</a></p>
+<h2 id="五、收尾（选做轮，但建议过）">五、收尾（选做轮，但建议过）</h2>
+<p><strong>15. <code>kill</code> 之后进程为什么没有 <code>terminate called</code>？你怎么保证线程干净退出？</strong>
+答不上 → 回<a href="05-concurrency.html">轮子 5 · 优雅关闭</a></p>
+<p><strong>16. <code>-fsanitize=thread</code> 跑过吗？输出是干净的吗？</strong>
+答不上 → 回<a href="05-concurrency.html">轮子 5 · <code>-fsanitize=thread</code> 是你的裁判</a></p>
+<h2 id="手把手自测流程">手把手自测流程</h2>
+<p>把这段照着做一遍，20 分钟，比看十遍文档有用。假设你的程序在 <code>./build/note</code>：</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># 1. 干净构建</span>
+<span class="hljs-built_in">rm</span> -rf build &amp;&amp; cmake -S . -B build &amp;&amp; cmake --build build -j
+<span class="hljs-comment">#   → 应该零警告。有警告就是 -Wall -Wextra 没开，回去加</span>
+
+<span class="hljs-comment"># 2. 空文件启动</span>
+<span class="hljs-built_in">rm</span> -f notes.bin wal.log
+./build/note list          <span class="hljs-comment"># 正常输出空列表，不报错</span>
+
+<span class="hljs-comment"># 3. 写入并验证持久化</span>
+./build/note add <span class="hljs-string">"第一条"</span>
+./build/note add <span class="hljs-string">"第二条"</span>
+./build/note list | <span class="hljs-built_in">wc</span> -l  <span class="hljs-comment"># 应该是 2</span>
+<span class="hljs-comment"># 退出程序，重新启动</span>
+./build/note list | <span class="hljs-built_in">wc</span> -l  <span class="hljs-comment"># 还是 2 → 过了第 4 题</span>
+
+<span class="hljs-comment"># 4. 损坏检测</span>
+<span class="hljs-built_in">cp</span> notes.bin notes.bin.bak
+<span class="hljs-built_in">printf</span> <span class="hljs-string">'\x00\x00\x00\x00'</span> | <span class="hljs-built_in">dd</span> of=notes.bin bs=1 seek=20 conv=notrunc 2&gt;/dev/null
+./build/note list          <span class="hljs-comment"># 应该报错退出（退出码非 0），不是崩</span>
+<span class="hljs-built_in">mv</span> notes.bin.bak notes.bin <span class="hljs-comment"># 恢复</span>
+
+<span class="hljs-comment"># 5. 崩溃恢复</span>
+<span class="hljs-built_in">rm</span> -f wal.log
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> $(<span class="hljs-built_in">seq</span> 1 1000); <span class="hljs-keyword">do</span> ./build/note add <span class="hljs-string">"n<span class="hljs-variable">$i</span>"</span> &gt; /dev/null; <span class="hljs-keyword">done</span> &amp;
+PID=$!
+wait_for=200
+<span class="hljs-keyword">while</span> [ $(./build/note list | <span class="hljs-built_in">wc</span> -l) -lt <span class="hljs-variable">$wait_for</span> ]; <span class="hljs-keyword">do</span> <span class="hljs-built_in">sleep</span> 0.05; <span class="hljs-keyword">done</span>
+<span class="hljs-built_in">kill</span> -9 <span class="hljs-variable">$PID</span> 2&gt;/dev/null
+./build/note list | <span class="hljs-built_in">wc</span> -l  <span class="hljs-comment"># 至少 200 条，且每条内容完整</span>
+
+<span class="hljs-comment"># 6. 日志截断</span>
+<span class="hljs-built_in">truncate</span> -s -50 wal.log
+./build/note list | <span class="hljs-built_in">head</span> -1  <span class="hljs-comment"># 能正常起来，不崩</span>
+<span class="hljs-comment">#   → 过了第 13 题</span>
+
+<span class="hljs-comment"># 7. 并发（如果做了轮子 5）</span>
+cmake -S . -B build-tsan -DCMAKE_CXX_FLAGS=<span class="hljs-string">"-fsanitize=thread -g -O1"</span> \
+  &amp;&amp; cmake --build build-tsan -j
+./build-tsan/note add <span class="hljs-string">"tsan"</span> 2&gt;&amp;1 | grep -i <span class="hljs-string">"warning: ThreadSanitizer"</span>
+<span class="hljs-comment">#   → 没有输出 = 过了第 16 题</span>
+</code></pre>
+<h2 id="通过之后">通过之后</h2>
+<p>12 题（第 1–14 题里任选 12）答上 9 道，进 <a href="https://docs.hanzel.top/lsm/" target="_blank">LSM 阶段 0</a>。</p>
+<p>如果只答上 5–8 道，做<strong>最短路径</strong>就够进 LSM 阶段 0–2 了 —— 缺的那几块多半在轮子 3 和 5，等你到 LSM 阶段 3 之前再回来补。</p>
+<p>如果答上不到 5 道，不要硬进。把轮子 1 和轮子 2 重做一遍（不是重读，是重写代码），把构建和持久化变成肌肉记忆。这两块是所有后续工作的地基，地基歪了，上面每一层都要还债。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="05-concurrency.html" class="navigation navigation-prev " aria-label="Previous page: 轮子 5 · 并发与优雅关闭（选做）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="appendix-cpp.html" class="navigation navigation-next " aria-label="Next page: 附录：竞赛生视角的 C++ 工程速查">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"入场券自测","level":"1.8","depth":1,"next":{"title":"附录：竞赛生视角的 C++ 工程速查","level":"1.9","depth":1,"path":"appendix-cpp.md","ref":"appendix-cpp.md","articles":[]},"previous":{"title":"轮子 5 · 并发与优雅关闭（选做）","level":"1.7","depth":1,"path":"05-concurrency.md","ref":"05-concurrency.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"LSM 课程热身轨道","gitbook":"*","description":"从命令行工具到 LSM 的五个轮子"},"file":{"path":"06-entrance-ticket.md","mtime":"2026-11-01T08:46:04.248Z","type":"markdown"},"gitbook":{"version":"6.2.5","time":"2026-11-01T08:46:15.528Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

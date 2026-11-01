@@ -1,0 +1,431 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <title>首页 · LSM 课程热身轨道</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.2.5">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="00-how-to-use.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="00-how-to-use.html">
+            
+                <a href="00-how-to-use.html">
+            
+                    
+                    如何使用热身站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-cli-tool.html">
+            
+                <a href="01-cli-tool.html">
+            
+                    
+                    轮子 1 · 命令行笔记工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="02-persistence.html">
+            
+                <a href="02-persistence.html">
+            
+                    
+                    轮子 2 · 让 note 记住
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="03-index.html">
+            
+                <a href="03-index.html">
+            
+                    
+                    轮子 3 · 索引分层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="04-wal-recovery.html">
+            
+                <a href="04-wal-recovery.html">
+            
+                    
+                    轮子 4 · 日志恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="05-concurrency.html">
+            
+                <a href="05-concurrency.html">
+            
+                    
+                    轮子 5 · 并发与优雅关闭（选做）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="06-entrance-ticket.html">
+            
+                <a href="06-entrance-ticket.html">
+            
+                    
+                    入场券自测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="appendix-cpp.html">
+            
+                <a href="appendix-cpp.html">
+            
+                    
+                    附录：竞赛生视角的 C++ 工程速查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="appendix-oj-map.html">
+            
+                <a href="appendix-oj-map.html">
+            
+                    
+                    附录：轮子 ↔ OJ 题号映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >首页</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="lsm-课程热身轨道">LSM 课程热身轨道</h1>
+<p>这不是 LSM 的教程。</p>
+<p>这是进 LSM 之前的<strong>热身</strong>：五个从零搭的小项目，把你从「能在一张卷子上写对算法的人」变成「能写出一个会掉电、会崩、会有别人同时访问、还不会丢数据的存储程序的人」。</p>
+<p>这两件事之间的差距，比大多数人以为的大。竞赛里你的程序从 <code>main</code> 开始到 <code>return 0</code> 结束，中间不会有人 <code>kill -9</code> 它，不会有第二个线程同时动你的数组，更不会有「三个月前写进磁盘的数据现在读不出来」。LSM 的五个阶段全都建立在「这些问题已经会处理」的前提上，所以这里先把它们单独拎出来练一遍。</p>
+<h2 id="五个轮子">五个轮子</h2>
+<table>
+<thead>
+<tr>
+<th>轮子</th>
+<th>做什么</th>
+<th>大约</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01-cli-tool.html">轮子 1</a></td>
+<td>命令行笔记工具：<code>note add/list/search/delete</code></td>
+<td>6–8 h</td>
+</tr>
+<tr>
+<td><a href="02-persistence.html">轮子 2</a></td>
+<td>让 note 记住：二进制格式 + 版本号 + 损坏检测</td>
+<td>8–10 h</td>
+</tr>
+<tr>
+<td><a href="03-index.html">轮子 3</a></td>
+<td>索引分层：50 万条时把数据放磁盘、索引留内存</td>
+<td>10–14 h</td>
+</tr>
+<tr>
+<td><a href="04-wal-recovery.html">轮子 4</a></td>
+<td>日志恢复：<code>kill -9</code> 之后一条不少</td>
+<td>10–14 h</td>
+</tr>
+<tr>
+<td><a href="05-concurrency.html">轮子 5</a></td>
+<td>并发与优雅关闭（选做）</td>
+<td>8–12 h</td>
+</tr>
+</tbody>
+</table>
+<h2 id="两条路径">两条路径</h2>
+<p><strong>最短路径（30–40 h）</strong>：轮子 1 → 轮子 2 → 轮子 4 → 直接进 LSM 阶段 0–2。</p>
+<p>跳过轮子 3 和 5。够用，因为阶段 0–2 的数据量还不至于逼你分层，也没有并发要求。代价是到阶段 3 写 Compact 的时候，你会第一次遇到「数据在磁盘上，我怎么只读一小块」——那时候补也来得及，就是会疼一点。</p>
+<p><strong>完整路径（50–70 h）</strong>：五个轮子全做 → 进 LSM 阶段 0–4。</p>
+<p>轮子 3 和 5 不是可选项而是提前交学费：索引分层对应 LSM 的 SSTable + 索引块，并发对应 Compaction 与读写的相互阻塞。先在小项目里被坑一遍，比在大项目里被坑便宜得多。</p>
+<h2 id="什么时候可以进-lsm">什么时候可以进 LSM</h2>
+<p>去 <a href="06-entrance-ticket.html">入场券自测</a> 走一遍。12 道题能答上 9 道、并且能当场跑出对应的现象，就可以进 LSM 了。</p>
+<p>答不上来的题不用猜——每题后面都写了回哪个轮子的哪一节。回去补那一个点，比重头再刷一遍整轮快得多。</p>
+<h2 id="回到主轨">回到主轨</h2>
+<p>LSM 五阶段在 <a href="https://docs.hanzel.top/lsm/" target="_blank">https://docs.hanzel.top/lsm/</a>。热身站是它的前置，不是替代。</p>
+<p>热身站里的代码不会进 LSM 的仓库，LSM 也不会复用这里的文件格式。这里唯一要带走的东西是：<strong>遇到「存不住 / 崩了 / 抢资源」这类问题时，你知道该往哪儿看。</strong></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="00-how-to-use.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 如何使用热身站">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"首页","level":"1.1","depth":1,"next":{"title":"如何使用热身站","level":"1.2","depth":1,"path":"00-how-to-use.md","ref":"00-how-to-use.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"LSM 课程热身轨道","gitbook":"*","description":"从命令行工具到 LSM 的五个轮子"},"file":{"path":"README.md","mtime":"2026-11-01T08:46:04.248Z","type":"markdown"},"gitbook":{"version":"6.2.5","time":"2026-11-01T08:46:15.528Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
