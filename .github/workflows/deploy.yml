@@ -38,9 +38,9 @@ jobs:
       - name: Add .nojekyll
         run: touch _book/.nojekyll
 
-      # 备份通道：产物同时推到 gh-pages 分支。
-      # 如果 Pages 用分支部署，这里就是发布源；如果用 Actions 产物部署，这一支只是冗余。
-      - name: Mirror build to gh-pages branch
+      # 主通道：产物推到 gh-pages 分支。
+      # Pages 发布源设为「Deploy from a branch → gh-pages → /」时，这一支就是发布源。
+      - name: Publish to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -48,17 +48,24 @@ jobs:
           publish_branch: gh-pages
           force_orphan: true
 
-      # 主通道：GitHub Actions 产物部署（和 lsm 仓库一致，不需要 gh-pages 分支）
+      # 备用通道：Pages 发布源设为「GitHub Actions」时走这条路。
+      # GITHUB_TOKEN 通常无权创建 Pages 站点（Resource not accessible by integration），
+      # 所以这里 continue-on-error，让「分支部署」模式下任务仍然是绿的。
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
+        continue-on-error: true
 
       - name: Upload artifact
+        if: steps.pages.outcome == 'success'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_book
 
       - name: Deploy to GitHub Pages
         id: deployment
+        if: steps.pages.outcome == 'success'
         uses: actions/deploy-pages@v4
+        continue-on-error: true
