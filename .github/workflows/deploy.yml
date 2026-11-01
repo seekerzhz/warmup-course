@@ -1,0 +1,64 @@
+name: Deploy GitBook
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-warmup
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build with HonKit
+        run: npx --yes honkit@6.2.5 build . _book
+
+      - name: Rewrite absolute asset paths for sub-path
+        run: |
+          find _book -name "*.html" -exec sed -i \
+            's|"/gitbook/|"/warmup-course/gitbook/|g; s|src="/gitbook/|src="/warmup-course/gitbook/|g; s|href="/gitbook/|href="/warmup-course/gitbook/|g' {} +
+
+      - name: Add .nojekyll
+        run: touch _book/.nojekyll
+
+      # 备份通道：产物同时推到 gh-pages 分支。
+      # 如果 Pages 用分支部署，这里就是发布源；如果用 Actions 产物部署，这一支只是冗余。
+      - name: Mirror build to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_book
+          publish_branch: gh-pages
+          force_orphan: true
+
+      # 主通道：GitHub Actions 产物部署（和 lsm 仓库一致，不需要 gh-pages 分支）
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_book
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
